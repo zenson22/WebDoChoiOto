@@ -25,7 +25,7 @@ public class User implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 
 	@Column(name="SDT_KH")
 	private String phone;
@@ -37,12 +37,12 @@ public class User implements Serializable {
 	}
 
 	
-	public int getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(Long long1) {
+		this.id = long1;
 	}
 
 

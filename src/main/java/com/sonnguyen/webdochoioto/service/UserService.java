@@ -7,7 +7,7 @@ import com.sonnguyen.webdochoioto.model.UserDTO;
 public interface UserService {
 	public void insert(UserDTO user);
 	public void update(UserDTO user);
-	public void delete(int id);
-	public UserDTO getUserById(int id);
+	public void delete(Long id);
+	public UserDTO getUserById(Long id);
 	public List<UserDTO> getAllUser();
 }
