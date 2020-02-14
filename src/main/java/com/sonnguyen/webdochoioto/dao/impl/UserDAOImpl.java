@@ -29,12 +29,12 @@ public class UserDAOImpl implements UserDAO{
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(Long id) {
 		sessionFactory.getCurrentSession().delete(getUserById(id));
 	}
 
 	@Override
-	public User getUserById(int id) {
+	public User getUserById(Long id) {
 		return (User) sessionFactory.getCurrentSession().get(User.class, id);
 	}
 

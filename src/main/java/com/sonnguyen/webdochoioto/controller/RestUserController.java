@@ -29,7 +29,7 @@ public class RestUserController {
 	}
 	
 	@RequestMapping(value="/user/{userId}",method=RequestMethod.GET)
-	public  UserDTO viewOneUser(HttpServletRequest request,@PathVariable ("userId") int id) {
+	public  UserDTO viewOneUser(HttpServletRequest request,@PathVariable ("userId") Long id) {
 		return userService.getUserById(id);
 	}
 	

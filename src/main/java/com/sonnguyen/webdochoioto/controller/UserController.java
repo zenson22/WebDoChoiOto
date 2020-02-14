@@ -52,7 +52,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/sua-nguoi-dung/{userId}",method=RequestMethod.GET)
-	public String updateUser(HttpServletRequest request,@PathVariable ("userId") int id) {
+	public String updateUser(HttpServletRequest request,@PathVariable ("userId") Long id) {
 		request.setAttribute("user", userService.getUserById(id));
 		return "user/addUser";
 	}
@@ -68,14 +68,14 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/xoa-nguoi-dung/{userId}",method=RequestMethod.GET)
-	public String deleteUser(HttpServletRequest request,@PathVariable ("userId") int id) {
+	public String deleteUser(HttpServletRequest request,@PathVariable ("userId") Long id) {
 		userService.delete(id);
 		return "redirect:/danh-sach-nguoi-dung";
 	}
 	
 	
 	@RequestMapping(value="/chi-tiet-nguoi-dung/{userId}",method=RequestMethod.GET)
-	public String viewUser(HttpServletRequest request,@PathVariable ("userId") int id) {
+	public String viewUser(HttpServletRequest request,@PathVariable ("userId") Long id) {
 		request.setAttribute("user", userService.getUserById(id));
 		return "user/addUser";
 	}
