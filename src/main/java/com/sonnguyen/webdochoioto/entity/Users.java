@@ -42,20 +42,21 @@ public class Users implements java.io.Serializable {
 	private String createdBy;
 	private String modifiedBy;
 	private Integer age;
+	private Boolean status;
 	private Set<Roles> roleses = new HashSet<Roles>(0);
 	private Set<Orders> orderses = new HashSet<Orders>(0);
 
 	public Users() {
 	}
 
-	public Users(String username, String password, String phone) {
+	public Users(String username, String password, Boolean status) {
 		this.username = username;
 		this.password = password;
-		this.phone = phone;
+		this.setStatus(status);
 	}
 
 	public Users(String username, String email, String password, Date createdDate, Date modifiedDate, String phone,
-			String address, String fullName, String avatar, String createdBy, String modifiedBy, Integer age,
+			String address, String fullName, String avatar, String createdBy, String modifiedBy, Integer age,Boolean status,
 			Set<Roles> roleses, Set<Orders> orderses) {
 		this.username = username;
 		this.email = email;
@@ -69,6 +70,7 @@ public class Users implements java.io.Serializable {
 		this.createdBy = createdBy;
 		this.modifiedBy = modifiedBy;
 		this.age = age;
+		this.setStatus(status);
 		this.roleses = roleses;
 		this.orderses = orderses;
 	}
@@ -103,7 +105,7 @@ public class Users implements java.io.Serializable {
 		this.email = email;
 	}
 
-	@Column(name = "password", nullable = false, length = 32)
+	@Column(name = "password", nullable = false, length = 255)
 	public String getPassword() {
 		return this.password;
 	}
@@ -214,6 +216,15 @@ public class Users implements java.io.Serializable {
 
 	public void setOrderses(Set<Orders> orderses) {
 		this.orderses = orderses;
+	}
+
+	@Column(name = "status")
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 
 }
