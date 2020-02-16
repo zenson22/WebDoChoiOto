@@ -80,8 +80,8 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-            <!-- header area end -->
+</div>
+<!-- header area end -->
             <!-- page title area start -->
             <div class="page-title-area">
                 <div class="row align-items-center">

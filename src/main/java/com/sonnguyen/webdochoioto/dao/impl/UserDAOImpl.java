@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sonnguyen.webdochoioto.dao.UserDAO;
-import com.sonnguyen.webdochoioto.entity.User;
+import com.sonnguyen.webdochoioto.entity.Users;
 
 @Repository
 @Transactional
@@ -19,29 +19,29 @@ public class UserDAOImpl implements UserDAO{
 	SessionFactory sessionFactory;
 	
 	@Override
-	public void insert(User user) {
+	public void insert(Users user) {
 		sessionFactory.getCurrentSession().save(user);
 	}
 
 	@Override
-	public void update(User user) {
+	public void update(Users user) {
 		sessionFactory.getCurrentSession().merge(user);
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		sessionFactory.getCurrentSession().delete(getUserById(id));
 	}
 
 	@Override
-	public User getUserById(Long id) {
-		return (User) sessionFactory.getCurrentSession().get(User.class, id);
+	public Users getUserById(Integer id) {
+		return (Users) sessionFactory.getCurrentSession().get(Users.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<User> getAllUser() {
-		Criteria criteria=sessionFactory.getCurrentSession().createCriteria(User.class);
+	public List<Users> getAllUser() {
+		Criteria criteria=sessionFactory.getCurrentSession().createCriteria(Users.class);
 		return criteria.list();
 	}
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class AbstractModel<T> {
 	
-	private Long id;
+	private Integer id;
 	private Timestamp createdDate;
 	private Timestamp modifiedDate;
 	private String createdBy;
@@ -22,11 +22,11 @@ public class AbstractModel<T> {
 	private String alert;
 	private String message;
 	private String type;
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setId(Integer integer) {
+		this.id = integer;
 	}
 	public Timestamp getCreatedDate() {
 		return createdDate;
