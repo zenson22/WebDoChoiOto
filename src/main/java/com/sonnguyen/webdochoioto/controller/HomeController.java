@@ -19,15 +19,12 @@ public class HomeController {
 	@Autowired
 	private UserValidator userValidator;
 
-	@RequestMapping("/")
+	@RequestMapping("/admin")
 	public String homePage(HttpServletRequest request) {
-		UserDTO userDTO=new UserDTO();
-		userDTO.setUsername("Nhap ten cua ban");
-		request.setAttribute("user", userDTO);
-		return "home";
+		return "admin/home";
 	}
 	
-	@RequestMapping(value="thong-tin-nguoi-dung",method=RequestMethod.POST)
+	@RequestMapping(value="/thong-tin-nguoi-dung",method=RequestMethod.POST)
 	public String homePage(HttpServletRequest request,@ModelAttribute ("user") UserDTO userDTO,BindingResult bindingResult) {
 		userValidator.validate(userDTO, bindingResult);
 		if(bindingResult.hasErrors()) {

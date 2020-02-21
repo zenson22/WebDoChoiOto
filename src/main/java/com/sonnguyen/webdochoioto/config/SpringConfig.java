@@ -28,7 +28,7 @@ import com.sonnguyen.webdochoioto.validator.UserValidator;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages="com.nguyenson")
+@ComponentScan(basePackages="com.sonnguyen.webdochoioto")
 @PropertySource(value= {"classpath:db.properties"})
 @EnableTransactionManagement
 public class SpringConfig implements WebMvcConfigurer{
@@ -77,7 +77,7 @@ public class SpringConfig implements WebMvcConfigurer{
 	LocalSessionFactoryBean  entityManagerFactoryBean() {
 		LocalSessionFactoryBean  bean=new LocalSessionFactoryBean();
 		bean.setDataSource(dataSource());
-		bean.setPackagesToScan("com.nguyenson.entity");
+		bean.setPackagesToScan("com.sonnguyen.webdochoioto.entity");
 		
 		
 		Properties properties=new Properties();

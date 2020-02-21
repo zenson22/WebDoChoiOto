@@ -4,7 +4,7 @@
 <footer>
 	<div class="footer-area">
 		<p>
-			© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.
+			© Copyright 2018 by <a href="https://colorlib.com/wp/">đồ chơi ô tô</a>.
 		</p>
 	</div>
 </footer>
