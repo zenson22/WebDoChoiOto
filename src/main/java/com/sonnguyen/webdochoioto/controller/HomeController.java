@@ -19,9 +19,9 @@ public class HomeController {
 	@Autowired
 	private UserValidator userValidator;
 
-	@RequestMapping("/admin")
+	@RequestMapping("/")
 	public String homePage(HttpServletRequest request) {
-		return "admin/home";
+		return "index";
 	}
 	
 	@RequestMapping(value="/thong-tin-nguoi-dung",method=RequestMethod.POST)

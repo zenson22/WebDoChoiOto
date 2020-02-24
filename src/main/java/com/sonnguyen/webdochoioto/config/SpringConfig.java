@@ -94,4 +94,5 @@ public class SpringConfig implements WebMvcConfigurer{
 	public HibernateTransactionManager hibernateTransactionManager(SessionFactory sessionFactory) {
 		return new HibernateTransactionManager(sessionFactory);
 	}
+	
 }

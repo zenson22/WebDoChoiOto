@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sonnguyen.webdochoioto.model.UserDTO;
-import com.sonnguyen.webdochoioto.service.UserService;
+import com.sonnguyen.webdochoioto.service.IUserService;
 
 @RestController
 public class RestUserController {
 	
-	@Autowired
-	private UserService userService;
+	/*@Autowired
+	private IUserService userService;
 	
 	@RequestMapping("/list-user")
 	public  List<UserDTO> getAllUser() {
@@ -37,5 +37,5 @@ public class RestUserController {
 	@ResponseStatus(code=HttpStatus.CREATED)
 	public  void addUser(@RequestBody  UserDTO userDTO) {
 		userService.insert(userDTO);
-	}
+	}*/
 }

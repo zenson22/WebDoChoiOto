@@ -1,7 +1,5 @@
 package com.sonnguyen.webdochoioto.config;
 
-import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +11,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.sonnguyen.webdochoioto.security.CustomSuccessHandler;
+import com.sonnguyen.webdochoioto.service.impl.CustomUserDetailsService;
+
 
 @Configuration
 @EnableWebSecurity
@@ -20,20 +21,20 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 
 	
 	@Autowired
-	private DataSource dataSource;
+	private CustomUserDetailsService userDetailsService;
 	
+	@Autowired
+	private CustomSuccessHandler customSuccessHandler;
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-
+	
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(dataSource).
-		usersByUsernameQuery("SELECT USERNAME,PASSWORD,STATUS FROM USERS WHERE USERNAME = ? ").//
-		authoritiesByUsernameQuery("SELECT USERNAME,ROLE FROM USERS WHERE USERNAME = ?").//
-		passwordEncoder(passwordEncoder());//
+		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 	
 	
@@ -46,15 +47,15 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		anyRequest().permitAll();
 		
 		http.formLogin().loginPage("/dang-nhap").//
-		loginProcessingUrl("/login").//
+		loginProcessingUrl("/j_spring_security_check").//
 		usernameParameter("j_username").//
 		passwordParameter("j_password").//
 		failureUrl("/dang-nhap?error=failed").//
-		defaultSuccessUrl("/danh-sach-san-pham");
-		
+		defaultSuccessUrl("/trang-chu");//
+		http.rememberMe().authenticationSuccessHandler(customSuccessHandler);
 		http.exceptionHandling().accessDeniedPage("/dang-nhap?error=denied");
-		http.rememberMe().rememberMeParameter("re");
-		http.logout().logoutUrl("/logout");
+		http.logout().logoutUrl("/thoat").//
+		deleteCookies("JSESSIONID");
 	}
 	
 	@Override

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/resources/common/taglib.jsp"%>
+<%@ page import="com.sonnguyen.webdochoioto.util.SecurityUtils" %>
 <!-- Header -->
 <header class="header1">
 	<!-- Header desktop -->
@@ -58,14 +59,28 @@
 						<li><a href="about.html">About</a></li>
 
 						<li><a href="contact.html">Contact</a></li>
+
+						<security:authorize access="isAnonymous()">
+							<li class="nav-item"><a class="nav-link" href='<c:url value="/dang-nhap" />'>Đăng
+									nhập</a></li>
+							<li class="nav-item"><a class="nav-link" href='<c:url value="/dang-nhap" />'>Đăng
+									ký</a></li>
+						</security:authorize>
+						<security:authorize access="isAuthenticated()">
+							<li class="nav-item"><a class="nav-link" href="#">Wellcome
+									<%=SecurityUtils.getPrincipal().getFullName()%>
+									</a></li>
+							<li class="nav-item"><a class="nav-link"
+								href="<c:url value='/thoat'/>">Thoát</a></li>
+						</security:authorize>
 					</ul>
 				</nav>
 			</div>
 
 			<!-- Header Icon -->
 			<div class="header-icons">
-				<a href="#" class="header-wrapicon1 dis-block"> 
-				<img src='<c:url  value="/resources/templates/web/images/icons/icon-header-01.png" />'
+				<a href="#" class="header-wrapicon1 dis-block"> <img
+					src='<c:url  value="/resources/templates/web/images/icons/icon-header-01.png" />'
 					class="header-icon1" alt="ICON">
 				</a> <span class="linedivide1"></span>
 

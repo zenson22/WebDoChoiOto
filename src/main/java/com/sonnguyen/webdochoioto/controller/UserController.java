@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sonnguyen.webdochoioto.model.UserDTO;
-import com.sonnguyen.webdochoioto.service.UserService;
+import com.sonnguyen.webdochoioto.service.IUserService;
 import com.sonnguyen.webdochoioto.validator.UserValidator;
 
 @Controller
@@ -20,8 +20,8 @@ public class UserController {
 	
 	//private static Logger logger=Logger.getLogger(UserController.class);
 	
-	@Autowired
-	private UserService userService;
+	/*@Autowired
+	private IUserService userService;
 	
 	@Autowired
 	private UserValidator userValidator;
@@ -78,5 +78,5 @@ public class UserController {
 	public String viewUser(HttpServletRequest request,@PathVariable ("userId") Integer id) {
 		request.setAttribute("user", userService.getUserById(id));
 		return "user/addUser";
-	}
+	}*/
 }

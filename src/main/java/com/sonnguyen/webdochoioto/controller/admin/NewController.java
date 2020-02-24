@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sonnguyen.webdochoioto.service.UserService;
+import com.sonnguyen.webdochoioto.service.IUserService;
 
 @Controller(value = "userControllerOfAdmin")
 public class NewController {
 	
 	@Autowired
-	private UserService newService;
+	private IUserService newService;
 
 	/*@RequestMapping(value = "/quan-tri/bai-viet/danh-sach", method = RequestMethod.GET)
 	public ModelAndView showList(@ModelAttribute("model") Users model) {

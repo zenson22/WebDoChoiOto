@@ -7,18 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sonnguyen.webdochoioto.dao.UserDAO;
+import com.sonnguyen.webdochoioto.dao.IUserDAO;
 import com.sonnguyen.webdochoioto.entity.Users;
 import com.sonnguyen.webdochoioto.model.UserDTO;
-import com.sonnguyen.webdochoioto.service.UserService;
+import com.sonnguyen.webdochoioto.service.IUserService;
 
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements IUserService{
+
 
 	@Autowired
-	private UserDAO userDao;
+	private IUserDAO userDao;
 	
 	
 	@Override
