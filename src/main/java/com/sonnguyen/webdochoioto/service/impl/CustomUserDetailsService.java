@@ -11,30 +11,30 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.sonnguyen.webdochoioto.dao.IUserDAO;
+import com.sonnguyen.webdochoioto.constant.SystemConstant;
 import com.sonnguyen.webdochoioto.dto.MyUser;
 import com.sonnguyen.webdochoioto.entity.Roles;
 import com.sonnguyen.webdochoioto.entity.Users;
+import com.sonnguyen.webdochoioto.repository.UserRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
-	
+
 	@Autowired
-	private IUserDAO userDao;
+	private UserRepository userRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Users userEntity = userDao.findOneByUsernameAndStatus(username, true);
-		
+		Users userEntity = userRepository.findOneByUsernameAndStatus(username, SystemConstant.ACTIVE_STATUS);
+
 		if (userEntity == null) {
 			throw new UsernameNotFoundException("User not found");
 		}
 		List<GrantedAuthority> authorities = new ArrayList<>();
-		for (Roles role: userEntity.getRoleses()) {
-			authorities.add(new SimpleGrantedAuthority(role.getCode()));
-		}
-		MyUser myUser = new MyUser(userEntity.getUsername(), userEntity.getPassword(), 
-							true, true, true, true, authorities);
+		Roles role = userEntity.getRoles();
+		authorities.add(new SimpleGrantedAuthority(role.getCode()));
+		MyUser myUser = new MyUser(userEntity.getUsername(), userEntity.getPassword(), true, true, true, true,
+				authorities);
 		myUser.setFullName(userEntity.getFullName());
 		return myUser;
 	}

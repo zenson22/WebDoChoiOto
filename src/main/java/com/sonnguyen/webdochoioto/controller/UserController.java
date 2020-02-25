@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sonnguyen.webdochoioto.model.UserDTO;
-import com.sonnguyen.webdochoioto.service.IUserService;
 import com.sonnguyen.webdochoioto.validator.UserValidator;
 
 @Controller

@@ -1,5 +1,5 @@
 package com.sonnguyen.webdochoioto.entity;
-// Generated Feb 16, 2020 6:59:26 PM by Hibernate Tools 4.3.5.Final
+// Generated Feb 24, 2020 9:39:46 PM by Hibernate Tools 4.3.5.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -11,8 +11,7 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -30,6 +29,7 @@ public class Users implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer id;
+	private Roles roles;
 	private String username;
 	private String email;
 	private String password;
@@ -42,22 +42,22 @@ public class Users implements java.io.Serializable {
 	private String createdBy;
 	private String modifiedBy;
 	private Integer age;
-	private Boolean status;
-	private Set<Roles> roleses = new HashSet<Roles>(0);
+	private Byte status;
 	private Set<Orders> orderses = new HashSet<Orders>(0);
 
 	public Users() {
 	}
 
-	public Users(String username, String password, Boolean status) {
+	public Users(String username, String password, String phone) {
 		this.username = username;
 		this.password = password;
-		this.setStatus(status);
+		this.phone = phone;
 	}
 
-	public Users(String username, String email, String password, Date createdDate, Date modifiedDate, String phone,
-			String address, String fullName, String avatar, String createdBy, String modifiedBy, Integer age,Boolean status,
-			Set<Roles> roleses, Set<Orders> orderses) {
+	public Users(Roles roles, String username, String email, String password, Date createdDate, Date modifiedDate,
+			String phone, String address, String fullName, String avatar, String createdBy, String modifiedBy,
+			Integer age, Byte status, Set<Orders> orderses) {
+		this.roles = roles;
 		this.username = username;
 		this.email = email;
 		this.password = password;
@@ -70,8 +70,7 @@ public class Users implements java.io.Serializable {
 		this.createdBy = createdBy;
 		this.modifiedBy = modifiedBy;
 		this.age = age;
-		this.setStatus(status);
-		this.roleses = roleses;
+		this.status = status;
 		this.orderses = orderses;
 	}
 
@@ -85,6 +84,16 @@ public class Users implements java.io.Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "role_id")
+	public Roles getRoles() {
+		return this.roles;
+	}
+
+	public void setRoles(Roles roles) {
+		this.roles = roles;
 	}
 
 	@Column(name = "username", nullable = false, length = 45)
@@ -105,7 +114,7 @@ public class Users implements java.io.Serializable {
 		this.email = email;
 	}
 
-	@Column(name = "password", nullable = false, length = 255)
+	@Column(name = "password", nullable = false)
 	public String getPassword() {
 		return this.password;
 	}
@@ -197,16 +206,13 @@ public class Users implements java.io.Serializable {
 		this.age = age;
 	}
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "roles_has_users", catalog = "db_ban_hang_oto", joinColumns = {
-			@JoinColumn(name = "users_id", nullable = false, updatable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "roles_id", nullable = false, updatable = false) })
-	public Set<Roles> getRoleses() {
-		return this.roleses;
+	@Column(name = "status")
+	public Byte getStatus() {
+		return this.status;
 	}
 
-	public void setRoleses(Set<Roles> roleses) {
-		this.roleses = roleses;
+	public void setStatus(Byte status) {
+		this.status = status;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
@@ -216,15 +222,6 @@ public class Users implements java.io.Serializable {
 
 	public void setOrderses(Set<Orders> orderses) {
 		this.orderses = orderses;
-	}
-
-	@Column(name = "status")
-	public Boolean getStatus() {
-		return status;
-	}
-
-	public void setStatus(Boolean status) {
-		this.status = status;
 	}
 
 }
