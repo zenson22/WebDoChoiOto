@@ -11,25 +11,35 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.sonnguyen.webdochoioto.dao.GenericDAO;
 import com.sonnguyen.webdochoioto.mapper.RowMapper;
 
+@Component
 public class AbstractDAO<T> implements GenericDAO<T> {
 
 	ResourceBundle resourceBundle = ResourceBundle.getBundle("db");
 	
+	@Autowired
+	private DataSource dataSource;
+	
 	public Connection getConnection() {
 		try {
-			Class.forName(resourceBundle.getString("db.driver"));
+			/*Class.forName(resourceBundle.getString("db.driver"));
 			String url = resourceBundle.getString("db.url");
 			String user = resourceBundle.getString("db.username");
 			String password = resourceBundle.getString("db.password");
-			
-			return DriverManager.getConnection(url, user, password);
-		} catch (ClassNotFoundException | SQLException e) {
+			return DriverManager.getConnection(url, user, password);*/
+			return dataSource.getConnection();
+		} catch (Exception e) {
 			return null;
 		}
 	}
+	
 
 	@Override
 	public <T> List<T> query(String sql, RowMapper<T> rowMapper, Object... parameters) {
@@ -69,15 +79,16 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 		try {
 			for (int i = 0; i < parameters.length; i++) {
 				Object parameter = parameters[i];
-				int index = i + 1;
 				if (parameter instanceof Long) {
-					statement.setLong(index, (Long) parameter);
+					statement.setLong(i + 1, (Long) parameter);
 				} else if (parameter instanceof String) {
-					statement.setString(index, (String) parameter);
+					statement.setString(i + 1, (String) parameter);
+				} else if (parameter instanceof Float) {
+					statement.setFloat(i + 1, (Float) parameter);
 				} else if (parameter instanceof Integer) {
-					statement.setInt(index, (Integer) parameter);
+					statement.setInt(i + 1, (Integer) parameter);
 				} else if (parameter instanceof Timestamp) {
-					statement.setTimestamp(index, (Timestamp) parameter);
+					statement.setTimestamp(i + 1, (Timestamp) parameter);
 				}
 			}
 		} catch (SQLException e) {

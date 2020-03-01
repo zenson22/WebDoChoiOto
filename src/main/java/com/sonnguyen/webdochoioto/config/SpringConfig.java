@@ -10,6 +10,8 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import com.sonnguyen.webdochoioto.validator.CategoryValidator;
+import com.sonnguyen.webdochoioto.validator.ProductValidator;
 import com.sonnguyen.webdochoioto.validator.UserValidator;
 
 
@@ -40,6 +42,13 @@ public class SpringConfig implements WebMvcConfigurer{
 		return new UserValidator();
 	}
 	
+	@Bean 
+	public ProductValidator productValidator() {
+		return new ProductValidator();
+	}
 	
-	
+	@Bean
+	public CategoryValidator categoryValidator() {
+		return new CategoryValidator();
+	}
 }

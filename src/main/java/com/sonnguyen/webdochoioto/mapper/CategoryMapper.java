@@ -12,7 +12,6 @@ public class CategoryMapper implements RowMapper<CategoryDTO> {
 		try {
 			CategoryDTO category = new CategoryDTO();
 			category.setId(resultSet.getInt("id"));
-			category.setCode(resultSet.getString("code"));
 			category.setName(resultSet.getString("name"));
 			return category;
 		} catch (SQLException e) {

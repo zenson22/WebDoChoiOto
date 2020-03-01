@@ -1,5 +1,5 @@
 package com.sonnguyen.webdochoioto.entity;
-// Generated Feb 24, 2020 9:39:46 PM by Hibernate Tools 4.3.5.Final
+// Generated Feb 29, 2020 11:40:05 AM by Hibernate Tools 4.3.5.Final
 
 import java.util.HashSet;
 import java.util.Set;

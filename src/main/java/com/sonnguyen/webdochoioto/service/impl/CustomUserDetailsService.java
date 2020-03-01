@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 
 import com.sonnguyen.webdochoioto.constant.SystemConstant;
 import com.sonnguyen.webdochoioto.dto.MyUser;
-import com.sonnguyen.webdochoioto.entity.Roles;
-import com.sonnguyen.webdochoioto.entity.Users;
+import com.sonnguyen.webdochoioto.entity.Role;
+import com.sonnguyen.webdochoioto.entity.User;
 import com.sonnguyen.webdochoioto.repository.UserRepository;
 
 @Service
@@ -25,17 +25,18 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Users userEntity = userRepository.findOneByUsernameAndStatus(username, SystemConstant.ACTIVE_STATUS);
+		User user = userRepository.findOneByUsernameAndStatus(username, SystemConstant.ACTIVE_STATUS);
 
-		if (userEntity == null) {
+		if (user == null) {
 			throw new UsernameNotFoundException("User not found");
 		}
 		List<GrantedAuthority> authorities = new ArrayList<>();
-		Roles role = userEntity.getRoles();
-		authorities.add(new SimpleGrantedAuthority(role.getCode()));
-		MyUser myUser = new MyUser(userEntity.getUsername(), userEntity.getPassword(), true, true, true, true,
+		for (Role role: user.getRoles()) {
+			authorities.add(new SimpleGrantedAuthority("ROLE_"+ role.getCode()));
+		}
+		MyUser myUser = new MyUser(user.getUsername(), user.getPassword(), true, true, true, true,
 				authorities);
-		myUser.setFullName(userEntity.getFullName());
+		myUser.setFullName(user.getFullName());
 		return myUser;
 	}
 

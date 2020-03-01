@@ -2,6 +2,6 @@ package com.sonnguyen.webdochoioto.constant;
 
 public class SystemConstant {
 	
-	public static final boolean ACTIVE_STATUS = true;
-	public static final boolean INACTIVE_STATUS = false;
+	public static final Integer ACTIVE_STATUS = 1;
+	public static final Integer INACTIVE_STATUS = 0;
 }

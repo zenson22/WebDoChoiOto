@@ -18,7 +18,15 @@ public class UserValidator implements Validator{
 		if(user.getPhone().length()<10) {
 			errors.rejectValue("phone", "length.field");
 		}
+		if(user.getPassword().length()<8) {
+			errors.rejectValue("password", "password_length.field");
+		}
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "phone", "empty.field");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "empty.field");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "age", "empty.field");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "address", "empty.field");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "fullName", "empty.field");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "empty.field");
 	}
 
 }

@@ -19,4 +19,29 @@ public class CategoryService implements ICategoryService {
 	public List<CategoryDTO> findAll() {
 		return categoryDao.findAll();
 	}
+
+	@Override
+	public CategoryDTO findOne(Integer id) {
+		return categoryDao.findOne(id);
+	}
+
+	@Override
+	public CategoryDTO findOneByName(String name) {
+		return categoryDao.findOneByName(name);
+	}
+
+	@Override
+	public void insert(CategoryDTO category) {
+		categoryDao.insert(category);
+	}
+
+	@Override
+	public void update(CategoryDTO category) {
+		categoryDao.update(category);
+	}
+
+	@Override
+	public void delete(Integer id) {
+		categoryDao.delete(id);
+	}
 }

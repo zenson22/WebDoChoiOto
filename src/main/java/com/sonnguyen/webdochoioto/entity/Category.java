@@ -1,5 +1,5 @@
 package com.sonnguyen.webdochoioto.entity;
-// Generated Feb 24, 2020 9:39:46 PM by Hibernate Tools 4.3.5.Final
+// Generated Feb 29, 2020 11:40:05 AM by Hibernate Tools 4.3.5.Final
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,9 +19,12 @@ import javax.persistence.Table;
 @Table(name = "category", catalog = "db_ban_hang_oto")
 public class Category implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String name;
-	private String code;
 	private Set<Product> products = new HashSet<Product>(0);
 
 	public Category() {
@@ -31,9 +34,8 @@ public class Category implements java.io.Serializable {
 		this.name = name;
 	}
 
-	public Category(String name, String code, Set<Product> products) {
+	public Category(String name, Set<Product> products) {
 		this.name = name;
-		this.code = code;
 		this.products = products;
 	}
 
@@ -56,15 +58,6 @@ public class Category implements java.io.Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	@Column(name = "code", length = 45)
-	public String getCode() {
-		return this.code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "category")

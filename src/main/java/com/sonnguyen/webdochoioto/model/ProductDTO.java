@@ -1,13 +1,14 @@
 package com.sonnguyen.webdochoioto.model;
 
-public class ProductDTO {
+public class ProductDTO extends AbstractModel<ProductDTO>{
 
 	private float discount;
 	private String description;
 	private String name;
-	private String code;
+	private Long price;
 	private Long brandId;
 	private Long categoryId;
+	private int soLuong;
 
 	public float getDiscount() {
 		return discount;
@@ -33,14 +34,6 @@ public class ProductDTO {
 		this.name = name;
 	}
 
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
 	public Long getBrandId() {
 		return brandId;
 	}
@@ -56,5 +49,22 @@ public class ProductDTO {
 	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
 	}
+
+	public int getSoLuong() {
+		return soLuong;
+	}
+
+	public void setSoLuong(int soLuong) {
+		this.soLuong = soLuong;
+	}
+
+	public Long getPrice() {
+		return price;
+	}
+
+	public void setPrice(Long price) {
+		this.price = price;
+	}
+
 
 }

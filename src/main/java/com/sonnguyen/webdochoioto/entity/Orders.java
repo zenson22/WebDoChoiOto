@@ -1,5 +1,5 @@
 package com.sonnguyen.webdochoioto.entity;
-// Generated Feb 24, 2020 9:39:46 PM by Hibernate Tools 4.3.5.Final
+// Generated Feb 29, 2020 11:40:05 AM by Hibernate Tools 4.3.5.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -29,27 +29,30 @@ public class Orders implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private Users users;
-	private byte[] status;
+	private User user;
+	private Boolean status;
 	private Date orderDate;
 	private int totalPrice;
+	private int quantity;
 	private Set<ProductOrdersDetails> productOrdersDetailses = new HashSet<ProductOrdersDetails>(0);
 
 	public Orders() {
 	}
 
-	public Orders(Users users, Date orderDate, int totalPrice) {
-		this.users = users;
+	public Orders(User user, Date orderDate, int totalPrice, int quantity) {
+		this.user = user;
 		this.orderDate = orderDate;
 		this.totalPrice = totalPrice;
+		this.quantity = quantity;
 	}
 
-	public Orders(Users users, byte[] status, Date orderDate, int totalPrice,
+	public Orders(User user, Boolean status, Date orderDate, int totalPrice, int quantity,
 			Set<ProductOrdersDetails> productOrdersDetailses) {
-		this.users = users;
+		this.user = user;
 		this.status = status;
 		this.orderDate = orderDate;
 		this.totalPrice = totalPrice;
+		this.quantity = quantity;
 		this.productOrdersDetailses = productOrdersDetailses;
 	}
 
@@ -67,20 +70,20 @@ public class Orders implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "users_id", nullable = false)
-	public Users getUsers() {
-		return this.users;
+	public User getUser() {
+		return this.user;
 	}
 
-	public void setUsers(Users users) {
-		this.users = users;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Column(name = "status")
-	public byte[] getStatus() {
+	public Boolean getStatus() {
 		return this.status;
 	}
 
-	public void setStatus(byte[] status) {
+	public void setStatus(Boolean status) {
 		this.status = status;
 	}
 
@@ -110,6 +113,15 @@ public class Orders implements java.io.Serializable {
 
 	public void setProductOrdersDetailses(Set<ProductOrdersDetails> productOrdersDetailses) {
 		this.productOrdersDetailses = productOrdersDetailses;
+	}
+
+	@Column(name = "quantity", nullable = false)
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 }

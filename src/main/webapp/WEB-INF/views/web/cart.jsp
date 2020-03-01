@@ -8,12 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- Title Page -->
-	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url('<c:url  value="/resources/templates/web/images/heading-pages-01.jpg" />');">
-		<h2 class="l-text2 t-center">
-			Cart
-		</h2>
-	</section>
 
 	<!-- Cart -->
 	<section class="cart bgwhite p-t-70 p-b-100">
@@ -24,40 +18,48 @@
 					<table class="table-shopping-cart">
 						<tr class="table-head">
 							<th class="column-1"></th>
-							<th class="column-2">Product</th>
-							<th class="column-3">Price</th>
-							<th class="column-4 p-l-70">Quantity</th>
-							<th class="column-5">Total</th>
+							<th class="column-2">Sản Phẩm</th>
+							<th class="column-3">Giá</th>
+							<th class="column-4 p-l-70">Số Lượng</th>
+							<th class="column-5">Tổng Tiền</th>
 						</tr>
 
 						<tr class="table-row">
 							<td class="column-1">
 								<div class="cart-img-product b-rad-4 o-f-hidden">
-									<img src='<c:url  value="/resources/templates/web/images/item-10.jpg" />' alt="IMG-PRODUCT">
+								<c:set var="count" value="0"></c:set>
+									<c:forEach var="img" items="${order.product.imageses}">
+										
+										<c:if test="${count==0 }">
+											<img src='<c:url value="/resources/templates/web/images/product/${img.url}" />' alt="IMG-PRODUCT">				
+										</c:if>
+										${count=1}
+										
+									</c:forEach>
 								</div>
 							</td>
-							<td class="column-2">Men Tshirt</td>
-							<td class="column-3">$36.00</td>
+							<td class="column-2">${order.product.name }</td>
+							<td class="column-3">${order.product.price }</td>
 							<td class="column-4">
 								<div class="flex-w bo5 of-hidden w-size17">
 									<button class="btn-num-product-down color1 flex-c-m size7 bg8 eff2">
 										<i class="fs-12 fa fa-minus" aria-hidden="true"></i>
 									</button>
 
-									<input class="size8 m-text18 t-center num-product" type="number" name="num-product1" value="1">
+									<input class="size8 m-text18 t-center num-product" type="number" name="quantity" value="${order.quantity }">
 
 									<button class="btn-num-product-up color1 flex-c-m size7 bg8 eff2">
 										<i class="fs-12 fa fa-plus" aria-hidden="true"></i>
 									</button>
 								</div>
 							</td>
-							<td class="column-5">$36.00</td>
+							<td class="column-5">${order.product.price *order.quantity}</td>
 						</tr>
 
 						<tr class="table-row">
 							<td class="column-1">
 								<div class="cart-img-product b-rad-4 o-f-hidden">
-									<img src='<c:url  value="/resources/templates/web/images/item-05.jpg" />' alt="IMG-PRODUCT">
+									<img src='<c:url  value="/resources/templates/web/images/noLoad.png" />' alt="IMG-PRODUCT">
 								</div>
 							</td>
 							<td class="column-2">Mug Adventure</td>

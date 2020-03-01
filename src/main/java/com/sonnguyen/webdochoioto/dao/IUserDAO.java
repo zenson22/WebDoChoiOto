@@ -2,13 +2,12 @@ package com.sonnguyen.webdochoioto.dao;
 
 import java.util.List;
 
-import com.sonnguyen.webdochoioto.entity.Users;
+import com.sonnguyen.webdochoioto.model.UserDTO;
 
 public interface IUserDAO {
-	public void insert(Users user);
-	public void update(Users user);
+	public void insert(UserDTO user);
+	public void update(UserDTO user);
 	public void delete(Integer id);
-	public Users getUserById(Integer id);
-	public List<Users> getAllUser();
-	public Users findOneByUsernameAndStatus(String username, boolean status);
+	public List<UserDTO> findAll();
+	public UserDTO findOne(Integer id);
 }

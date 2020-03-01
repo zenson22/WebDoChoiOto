@@ -26,10 +26,28 @@ public class CategoryDAOImpl extends AbstractDAO<CategoryDTO> implements ICatego
 	}
 
     @Override
-    public CategoryDTO findOneByCode(String code) {
-		String sql = "SELECT * FROM category WHERE code = ?";
-		List<CategoryDTO> category = query(sql, new CategoryMapper(), code);
+    public CategoryDTO findOneByName(String name) {
+		String sql = "SELECT * FROM category WHERE name = ?";
+		List<CategoryDTO> category = query(sql, new CategoryMapper(), name);
 		return category.isEmpty() ? null : category.get(0);
     }
+
+	@Override
+	public void insert(CategoryDTO category) {
+		String sql = "INSERT INTO Category(name) VALUES(?)";
+		insert(sql,category.getName() );
+	}
+
+	@Override
+	public void update(CategoryDTO category) {
+		String sql = "UPDATE CATEGORY SET NAME = ? WHERE id = ?";
+		update(sql ,category.getName() , category.getId());
+	}
+
+	@Override
+	public void delete(Integer id) {
+		String sql =" DELETE FROM CATEGORY WHERE ID = ?";
+		update(sql,id);
+	}
 
 }

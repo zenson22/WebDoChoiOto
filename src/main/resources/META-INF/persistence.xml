@@ -8,8 +8,8 @@
 		<class>com.sonnguyen.webdochoioto.entity.Product</class>
 		<class>com.sonnguyen.webdochoioto.entity.ProductOrdersDetails</class>
 		<class>com.sonnguyen.webdochoioto.entity.ProductOrdersDetailsId</class>
-		<class>com.sonnguyen.webdochoioto.entity.Roles</class>
-		<class>com.sonnguyen.webdochoioto.entity.Users</class>
+		<class>com.sonnguyen.webdochoioto.entity.Role</class>
+		<class>com.sonnguyen.webdochoioto.entity.User</class>
     </persistence-unit>
 </persistence>
 

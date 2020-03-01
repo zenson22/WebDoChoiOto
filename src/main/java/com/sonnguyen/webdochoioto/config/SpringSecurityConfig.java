@@ -42,7 +42,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
 		
-		http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
+		http.authorizeRequests().antMatchers("/quan-tri/**").hasRole("ADMIN");
 		http.authorizeRequests().antMatchers("/user/**").hasRole("USER").//
 		anyRequest().permitAll();
 		
@@ -50,10 +50,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		loginProcessingUrl("/j_spring_security_check").//
 		usernameParameter("j_username").//
 		passwordParameter("j_password").//
-		failureUrl("/dang-nhap?error=failed").//
+		failureUrl("/dang-nhap?incorrectAccount").//
 		defaultSuccessUrl("/trang-chu");//
 		http.rememberMe().authenticationSuccessHandler(customSuccessHandler);
-		http.exceptionHandling().accessDeniedPage("/dang-nhap?error=denied");
+		http.sessionManagement().invalidSessionUrl("/dang-nhap?sessionTimeout");
 		http.logout().logoutUrl("/thoat").//
 		deleteCookies("JSESSIONID");
 	}

@@ -1,13 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
-		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory name="sessionFactory">
+    <session-factory>
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.password">123456</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/db_ban_hang_oto</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.search.autoregister_listeners">true</property>
+        <property name="hibernate.validator.apply_to_ddl">false</property>
+        <mapping class="com.sonnguyen.webdochoioto.entity.Product" />
+        <mapping class="com.sonnguyen.webdochoioto.entity.User" />
+        <mapping class="com.sonnguyen.webdochoioto.entity.Images" />
+        <mapping class="com.sonnguyen.webdochoioto.entity.Role" />
+        <mapping class="com.sonnguyen.webdochoioto.entity.Category" />
+        <mapping class="com.sonnguyen.webdochoioto.entity.Brand" />
+        <mapping class="com.sonnguyen.webdochoioto.entity.ProductOrdersDetails" />
+        <mapping class="com.sonnguyen.webdochoioto.entity.Orders" />
     </session-factory>
 </hibernate-configuration>

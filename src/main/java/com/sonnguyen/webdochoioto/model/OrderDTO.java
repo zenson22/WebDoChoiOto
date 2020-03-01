@@ -3,20 +3,21 @@ package com.sonnguyen.webdochoioto.model;
 import java.sql.Date;
 
 public class OrderDTO extends AbstractModel<OrderDTO>{
-		private UserDTO users;
-		private byte[] status;
+		private Integer userId;
+		private Integer status;
 		private Date orderDate;
 		private int totalPrice;
-		public UserDTO getUsers() {
-			return users;
+		private int quantity;
+		public Integer getUserId() {
+			return userId;
 		}
-		public void setUsers(UserDTO users) {
-			this.users = users;
+		public void setUsers(int id) {
+			this.userId = id;
 		}
-		public byte[] getStatus() {
+		public Integer getStatus() {
 			return status;
 		}
-		public void setStatus(byte[] status) {
+		public void setStatus(Integer status) {
 			this.status = status;
 		}
 		public Date getOrderDate() {
@@ -30,6 +31,12 @@ public class OrderDTO extends AbstractModel<OrderDTO>{
 		}
 		public void setTotalPrice(int totalPrice) {
 			this.totalPrice = totalPrice;
+		}
+		public int getQuantity() {
+			return quantity;
+		}
+		public void setQuantity(int quantity) {
+			this.quantity = quantity;
 		}
 		
 

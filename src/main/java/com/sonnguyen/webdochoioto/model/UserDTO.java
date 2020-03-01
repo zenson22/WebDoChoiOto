@@ -2,31 +2,29 @@ package com.sonnguyen.webdochoioto.model;
 
 import java.sql.Timestamp;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class UserDTO extends AbstractModel<UserDTO> {
 
 	private String username;
 	private String phone;
-	private MultipartFile avatar;
+	private String avatar;
 	private String email;
 	private String password;
 	private String address;
 	private String fullName;
-	private String age;
-	private boolean status;
+	private Integer age;
+	private Integer status;
 	private Timestamp createdDate;
 	private Timestamp modifiedDate;
 	private String createdBy;
 	private String modifiedBy;
-	private Integer roleId;
+	private String roleId;
 
-	public Integer getRoleId() {
+	public String getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(Integer roleId) {
-		this.roleId = roleId;
+	public void setRoleId(String code) {
+		this.roleId = code;
 	}
 
 	public Timestamp getCreatedDate() {
@@ -61,11 +59,11 @@ public class UserDTO extends AbstractModel<UserDTO> {
 		this.modifiedBy = modifiedBy;
 	}
 
-	public boolean isStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
@@ -101,19 +99,19 @@ public class UserDTO extends AbstractModel<UserDTO> {
 		this.fullName = fullName;
 	}
 
-	public String getAge() {
+	public Integer getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 
-	public MultipartFile getAvatar() {
+	public String getAvatar() {
 		return avatar;
 	}
 
-	public void setAvatar(MultipartFile avatar) {
+	public void setAvatar(String avatar) {
 		this.avatar = avatar;
 	}
 

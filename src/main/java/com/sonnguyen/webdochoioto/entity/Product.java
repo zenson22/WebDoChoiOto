@@ -1,15 +1,13 @@
 package com.sonnguyen.webdochoioto.entity;
-// Generated Feb 24, 2020 9:39:46 PM by Hibernate Tools 4.3.5.Final
-
-import static javax.persistence.GenerationType.IDENTITY;
+// Generated Feb 29, 2020 11:40:05 AM by Hibernate Tools 4.3.5.Final
 
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;

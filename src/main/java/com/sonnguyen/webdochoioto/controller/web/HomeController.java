@@ -14,15 +14,16 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller(value = "homeControllerOfWeb")
 public class HomeController {
 
-	@RequestMapping(value = "/trang-chu", method = RequestMethod.GET)
+	@RequestMapping(value = {"/","/trang-chu"}, method = RequestMethod.GET)
 	public ModelAndView homePage() {
 		ModelAndView mav = new ModelAndView("web/home");
 		return mav;
 	}
+
 	
 	@RequestMapping(value = "/dang-nhap", method = RequestMethod.GET)
-	public ModelAndView loginPage() {
-		ModelAndView mav = new ModelAndView("login");
+	public ModelAndView login(String error, String logout) {
+		ModelAndView mav = new ModelAndView("web/login");
 		return mav;
 	}
 	
@@ -35,8 +36,4 @@ public class HomeController {
 		return new ModelAndView("redirect:/trang-chu");
 	}
 	
-	@RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
-	public ModelAndView accessDenied() {
-		return new ModelAndView("redirect:/dang-nhap?accessDenied");
-	}
 }

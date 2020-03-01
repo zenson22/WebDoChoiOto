@@ -9,7 +9,7 @@
 </head>
 <body>
 		<!-- Title Page -->
-	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url('<c:url  value="/resources/templates/web/images/heading-pages-05.jpg" />');">
+	<section class="bg-title-page p-t-40 p-b-50 flex-col-c-m" style="background-image: url('<c:url  value="/resources/templates/web/images/noLoad.png" />');">
 		<h2 class="l-text2 t-center">
 			Blog
 		</h2>
@@ -24,7 +24,7 @@
 						<!-- item blog -->
 						<div class="item-blog p-b-80">
 							<a href="blog-detail.html" class="item-blog-img pos-relative dis-block hov-img-zoom">
-								<img src='<c:url  value="/resources/templates/web/images/blog-04.jpg" />' alt="IMG-BLOG">
+								<img src='<c:url  value="/resources/templates/web/images/noLoad.jpg" />' alt="IMG-BLOG">
 
 								<span class="item-blog-date dis-block flex-c-m pos1 size17 bg4 s-text1">
 									28 Dec, 2018
@@ -68,7 +68,7 @@
 						<!-- item blog -->
 						<div class="item-blog p-b-80">
 							<a href="blog-detail.html" class="item-blog-img pos-relative dis-block hov-img-zoom">
-								<img src='<c:url  value="/resources/templates/web/images/blog-05.jpg" />' alt="IMG-BLOG">
+								<img src='<c:url  value="/resources/templates/web/images/noLoad.png" />' alt="IMG-BLOG">
 
 								<span class="item-blog-date dis-block flex-c-m pos1 size17 bg4 s-text1">
 									26 Dec, 2018
@@ -112,7 +112,7 @@
 						<!-- item blog -->
 						<div class="item-blog p-b-80">
 							<a href="blog-detail.html" class="item-blog-img pos-relative dis-block hov-img-zoom">
-								<img src='<c:url  value="/resources/templates/web/images/blog-08.jpg" />' alt="IMG-BLOG">
+								<img src='<c:url  value="/resources/templates/web/images/noLoad.png" />' alt="IMG-BLOG">
 
 								<span class="item-blog-date dis-block flex-c-m pos1 size17 bg4 s-text1">
 									22 Dec, 2018
@@ -156,7 +156,7 @@
 						<!-- item blog -->
 						<div class="item-blog p-b-80">
 							<a href="blog-detail.html" class="item-blog-img pos-relative dis-block hov-img-zoom">
-								<img src='<c:url  value="/resources/templates/web/images/blog-02.jpg" />' alt="IMG-BLOG">
+								<img src='<c:url  value="/resources/templates/web/images/noLoad.png" />' alt="IMG-BLOG">
 
 								<span class="item-blog-date dis-block flex-c-m pos1 size17 bg4 s-text1">
 									18 Dec, 2018
@@ -200,7 +200,7 @@
 						<!-- item blog -->
 						<div class="item-blog p-b-80">
 							<a href="blog-detail.html" class="item-blog-img pos-relative dis-block hov-img-zoom">
-								<img src='<c:url  value="/resources/templates/web/images/blog-03.jpg" />' alt="IMG-BLOG">
+								<img src='<c:url  value="/resources/templates/web/images/noLoad.png" />' alt="IMG-BLOG">
 
 								<span class="item-blog-date dis-block flex-c-m pos1 size17 bg4 s-text1">
 									16 Dec, 2018
@@ -305,7 +305,7 @@
 						<ul class="bgwhite">
 							<li class="flex-w p-b-20">
 								<a href="product-detail.html" class="dis-block wrap-pic-w w-size22 m-r-20 trans-0-4 hov4">
-									<img src='<c:url  value="/resources/templates/web/images/item-16.jpg" />' alt="IMG-PRODUCT">
+									<img src='<c:url  value="/resources/templates/web/images/noLoad.png" />' alt="IMG-PRODUCT">
 								</a>
 
 								<div class="w-size23 p-t-5">
@@ -321,7 +321,7 @@
 
 							<li class="flex-w p-b-20">
 								<a href="product-detail.html" class="dis-block wrap-pic-w w-size22 m-r-20 trans-0-4 hov4">
-									<img src='<c:url  value="/resources/templates/web/images/item-17.jpg" />' alt="IMG-PRODUCT">
+									<img src='<c:url  value="/resources/templates/web/images/noLoad.png" />' alt="IMG-PRODUCT">
 								</a>
 
 								<div class="w-size23 p-t-5">
@@ -337,7 +337,7 @@
 
 							<li class="flex-w p-b-20">
 								<a href="product-detail.html" class="dis-block wrap-pic-w w-size22 m-r-20 trans-0-4 hov4">
-									<img src='<c:url  value="/resources/templates/web/images/item-08.jpg" />' alt="IMG-PRODUCT">
+									<img src='<c:url  value="/resources/templates/web/images/noLoad.png" />' alt="IMG-PRODUCT">
 								</a>
 
 								<div class="w-size23 p-t-5">
@@ -353,7 +353,7 @@
 
 							<li class="flex-w p-b-20">
 								<a href="product-detail.html" class="dis-block wrap-pic-w w-size22 m-r-20 trans-0-4 hov4">
-									<img src='<c:url  value="/resources/templates/web/images/item-03.jpg" />' alt="IMG-PRODUCT">
+									<img src='<c:url  value="/resources/templates/web/images/noLoad.png" />' alt="IMG-PRODUCT">
 								</a>
 
 								<div class="w-size23 p-t-5">
@@ -369,7 +369,7 @@
 
 							<li class="flex-w p-b-20">
 								<a href="product-detail.html" class="dis-block wrap-pic-w w-size22 m-r-20 trans-0-4 hov4">
-									<img src='<c:url  value="/resources/templates/web/images/item-05.jpg" />' alt="IMG-PRODUCT">
+									<img src='<c:url  value="/resources/templates/web/images/noLoad.png" />' alt="IMG-PRODUCT">
 								</a>
 
 								<div class="w-size23 p-t-5">
