@@ -29,11 +29,6 @@ public class AbstractDAO<T> implements GenericDAO<T> {
 	
 	public Connection getConnection() {
 		try {
-			/*Class.forName(resourceBundle.getString("db.driver"));
-			String url = resourceBundle.getString("db.url");
-			String user = resourceBundle.getString("db.username");
-			String password = resourceBundle.getString("db.password");
-			return DriverManager.getConnection(url, user, password);*/
 			return dataSource.getConnection();
 		} catch (Exception e) {
 			return null;

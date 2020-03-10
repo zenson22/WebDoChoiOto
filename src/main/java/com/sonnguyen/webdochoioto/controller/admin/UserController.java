@@ -60,7 +60,9 @@ public class UserController {
 	
 	@RequestMapping(value="/update-account/{userId}",method=RequestMethod.GET)
 	public String updateUser(HttpServletRequest request,@PathVariable ("userId") Integer id) {
-		request.setAttribute("user", userService.findOne(id));
+		UserDTO user =userService.findOne(id);
+		user.setRoleId(roleService.findOne(user.getId()).getCode());
+		request.setAttribute("user", user );
 		return "admin/account_edit";
 	}
 	
@@ -68,7 +70,7 @@ public class UserController {
 	public String updateUser(HttpServletRequest request,@ModelAttribute ("user") UserDTO userDTO,BindingResult bindingResult) {
 		userValidator.validate(userDTO, bindingResult);
 		if(bindingResult.hasErrors()) {
-			return "admin/account_insert";
+			return "admin/account_edit";
 		}
 		userService.update(userDTO);
 		return "redirect:/quan-tri/nguoi-dung";

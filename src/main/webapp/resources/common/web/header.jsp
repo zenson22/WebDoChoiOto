@@ -8,16 +8,22 @@
 	<div class="container-menu-header">
 		<div class="wrap_header">
 			<!-- Logo -->
-			<a href='<c:url value="/trang-chu" />' class="logo"> 
+			
+			<security:authorize access="hasRole('ROLE_ADMIN')">
+			   <a href='<c:url value="/quan-tri/trang-chu" />' class="logo"> QUẢN TRỊ</a>
+			</security:authorize>
+			<security:authorize access="!hasRole('ROLE_ADMIN')">
+				<a href='<c:url value="/trang-chu" />' class="logo"> 
 			<img src='<c:url  value="/resources/templates/web/images/icons/logo1.png" />'
 				alt="IMG-LOGO">
 			</a>
-
+			</security:authorize>
 			<!-- Menu -->
 			<div class="wrap_menu">
 				<nav class="menu">
 					<ul class="main_menu">
-						<li><a href='<c:url value="/trang-chu" />' >Home</a></li>
+						<li><a href='<c:url value="/trang-chu" />' >Home</a>
+						</li>
 
 						<li><a href='<c:url value="/san-pham" />'>Sản phẩm</a></li>
 

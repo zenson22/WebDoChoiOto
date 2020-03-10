@@ -1,10 +1,10 @@
-package com.sonnguyen.webdochoioto.dao;
+package com.sonnguyen.webdochoioto.service;
 
 import java.util.List;
 
 import com.sonnguyen.webdochoioto.model.OrderDTO;
 
-public interface IOrderDAO extends GenericDAO<OrderDTO>{
+public interface IOrderService {
 	List<OrderDTO> findAll();
 	OrderDTO findOne(Integer id);
 	List<OrderDTO> findByUserId(Integer userId);

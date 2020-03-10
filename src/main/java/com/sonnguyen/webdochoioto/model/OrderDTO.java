@@ -8,6 +8,9 @@ public class OrderDTO extends AbstractModel<OrderDTO>{
 		private Date orderDate;
 		private int totalPrice;
 		private int quantity;
+		private Integer productId;
+		private ProductDTO product;
+		private UserDTO user;
 		public Integer getUserId() {
 			return userId;
 		}
@@ -37,6 +40,24 @@ public class OrderDTO extends AbstractModel<OrderDTO>{
 		}
 		public void setQuantity(int quantity) {
 			this.quantity = quantity;
+		}
+		public Integer getProductId() {
+			return productId;
+		}
+		public void setProductId(Integer productId) {
+			this.productId = productId;
+		}
+		public ProductDTO getProduct() {
+			return product;
+		}
+		public void setProduct(ProductDTO product) {
+			this.product = product;
+		}
+		public UserDTO getUser() {
+			return user;
+		}
+		public void setUser(UserDTO user) {
+			this.user = user;
 		}
 		
 

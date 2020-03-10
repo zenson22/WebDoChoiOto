@@ -16,47 +16,6 @@
 					<div class="col-md-12">
 
 						<div class="panel panel-default">
-							<div class="panel-heading">Hóa Đơn Chi Tiết</div>
-							<div class="panel-body">
-								<div class="table-responsive">
-									<table class="table table-striped table-bordered table-hover"
-										id="dataTables-example">
-										<thead>
-											<tr style="text-align: center;">
-												<th>Hóa Đơn Chi Tiết</th>
-												<th>Mã Hóa Đơn</th>
-												<th>Sản Phẩm</th>
-												<th>Số Lượng</th>
-												<th>Giá Sản Phẩm</th>
-												<th>Giảm Giá</th>
-												<th>Tổng Tiền</th>
-												<th>Chức Năng</th>
-											</tr>
-										</thead>
-										<c:forEach items="${orders}" var = "order">
-										<tbody>
-											<tr class="odd gradeX">
-												<td>${order.orderSmall.id }</td>
-												<td>${order.id }</td>
-												<td>${order.product.name }</td>
-												<td>${order.product.soLuong}</td>
-												<td>${order.product.price } VNĐ</td>
-												<td>${order.product.discount*100 } %</td>
-												<td>${order.product.soLuong * order.product.price * order.product.discount } VNĐ
-												</td>
-												<td class="center" style="text-align: center;">
-												<a href="/update-order/${order.id }" class="btn btn-danger btn-xs">Sửa</a> 
-												<a href="/delete-order/${order.id}" onclick="return confirm('Bạn chắc chắn chứ ?')" class="btn btn-warning btn-xs">Xóa</a>
-												</td>
-											</tr>
-										</tbody>
-										</c:forEach>
-									</table>
-								</div>
-							</div>
-						</div>
-
-						<div class="panel panel-default">
 							<div class="panel-heading">Quản Lý Hóa Đơn</div>
 							<div class="panel-body">
 								<div class="table-responsive">
@@ -67,9 +26,9 @@
 												<th>Mã Hóa Đơn</th>
 												<th>Khách Hàng</th>
 												<th>Địa Chỉ Giao Hàng</th>
-												<th>Phương Thức Thanh Toán</th>
 												<th>Ngày Mua Hàng</th>
 												<th>Trạng Thái Đơn Hàng</th>
+												<th>Chi tiết đơn hàng</th>
 												<th>Chức Năng</th>
 											</tr>
 										</thead>
@@ -77,10 +36,10 @@
 										<tbody>
 											<tr class="odd gradeX">
 												<td>${order.id }</td>
-												<td>${order.user.username }</td>
+												<td>${order.user.fullName }</td>
 												<td>${order.user.address }</td>
-												<td>${order.payment }</td>
-												<td>${order.order_date }</td>	
+												
+												<td>${order.orderDate }</td>	
 												<td class="center" style="text-align: center;">
 												<c:if test="${order.status==1 }">
 													<a class="btn btn-success btn-xs" >Đã Thanh Toán</a>
@@ -89,9 +48,12 @@
 													<a class="btn btn-success btn-xs" >Đang chờ </a>
 												</c:if>
 												</td>
+												<td>
+													<a href= '<c:url value="/quan-tri/don-hang/orderDetail/${order.id }" />' class="btn btn-danger btn-xs">Xem chi tiết</a> 
+												</td>
 												<td class="center" style="text-align: center;">
-												<a href= "/update-orderDetail/${order.id }" class="btn btn-danger btn-xs">Sửa</a> 
-												<a href="/delete-orderDetail/${order.id }" onclick="return confirm('Bạn không thể xóa dòng này nếu mà bạn chưa xóa dòng tương ứng với hóa đơn chi tiết ?')"
+												<a href= '<c:url value="/quan-tri/don-hang/update-order/${order.id }" />' class="btn btn-danger btn-xs">Sửa</a> 
+												<a href='<c:url value="/quan-tri/don-hang/delete-order/${order.id }" />' onclick="return confirm('Bạn không thể xóa dòng này nếu mà bạn chưa xóa dòng tương ứng với hóa đơn chi tiết ?')"
 													class="btn btn-warning btn-xs">Xóa</a></td>
 											</tr>
 										</tbody>

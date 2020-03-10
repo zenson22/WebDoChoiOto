@@ -15,7 +15,7 @@ public class UserValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		UserDTO user=(UserDTO) target;
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "empty.field");
-		if(user.getPhone().length()<10) {
+		if(user.getPhone().length()<10 || user.getPhone().length() >11) {
 			errors.rejectValue("phone", "length.field");
 		}
 		if(user.getPassword().length()<8) {

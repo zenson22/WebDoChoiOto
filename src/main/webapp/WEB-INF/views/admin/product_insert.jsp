@@ -10,12 +10,6 @@
 <body>
 		<div id="page-wrapper">
 			<div id="page-inner">
-				<div class="row">
-					<div class="col-md-12">
-						<h2>Quản Lý Sản Phẩm</h2>
-					</div>
-				</div>
-
 				<hr />
 				<div class="row">
 					<div class="col-md-12">
@@ -63,7 +57,7 @@
 											</div>
 											<div class="form-group">
 												<label>Mô Tả</label>
-												<textarea class="form-control" name="description" rows="" cols=""></textarea>
+												<textarea class="form-control" name="description" rows="5" cols=""></textarea>
 												
 											</div>
 											<div class="form-group">

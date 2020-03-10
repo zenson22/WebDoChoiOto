@@ -10,12 +10,6 @@
 <body>
 		<div id="page-wrapper">
 			<div id="page-inner">
-				<div class="row">
-					<div class="col-md-12">
-						<h2>Quản Lý Tài Khoản</h2>
-					</div>
-				</div>
-
 				<hr />
 				<div class="row">
 					<div class="col-md-12">
@@ -40,24 +34,25 @@
 												<span style="color:red;"><form:errors path="password"></form:errors></span>
 											</div>
 											
-											<div class="form-group">											
-												<label>Địa Chỉ Email</label> 
-												<input class="form-control" placeholder="@gmail.com" type="text" name="email" />
-												<span style="color:red;"><form:errors path="email"></form:errors> </span>
-											</div>
-											
 											<div class="form-group">
 												<label>Họ Và Tên</label>
 												<input class="form-control" type="text" name="fullName"  />
 												<span style="color:red;"><form:errors path="fullName"></form:errors> </span>
 											</div>
-											
+											<div class="form-group">
+												<label>Tuổi</label>
+												<input class="form-control" type="text" name="age" />
+											</div>
 											<div class="form-group">
 												<label>Địa Chỉ</label>
 												<input class="form-control" type="text" name="address"  />
 												<span style="color:red;"><form:errors path="address"></form:errors></span>
 											</div>
-											
+											<div class="form-group">											
+												<label>Địa Chỉ Email</label> 
+												<input class="form-control" placeholder="@gmail.com" type="text" name="email" />
+												<span style="color:red;"><form:errors path="email"></form:errors> </span>
+											</div>
 											<div class="form-group">
 												<label>Số Điện Thoại</label>
 												<input class="form-control" type="text" name="phone" />
@@ -68,8 +63,8 @@
 												<label>Quyền Truy Cập</label>
 												<select class="form-control" name="roleId">
 													<option value="0" selected="selected">===Chọn===</option>
-													<option value="1">ADMIN</option>
-													<option value="2">USER</option>
+													<option value="ADMIN">ADMIN</option>
+													<option value="USER">USER</option>
 												</select>
 											</div>
 											<div class="form-group">
@@ -80,7 +75,6 @@
 													<option value="0" >Đang Chờ</option>
 												</select>
 											</div>
-											<input type="hidden" name="action" value="Insert"> 
 											<button type="submit" class="btn btn-success">Thêm</button>
 											<button type="reset" class="btn btn-primary">Reset</button>
 										</form:form>
