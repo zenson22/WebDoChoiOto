@@ -43,8 +43,8 @@
 												<td>${order.product.soLuong * order.product.price * order.product.discount } VNĐ
 												</td>
 												<td class="center" style="text-align: center;">
-												<a href='<c:url value = "/quan-tri/don-hang/update-order/${order.id }" />' class="btn btn-danger btn-xs">Sửa</a> 
-												<a href='<c:url value = "/quan-tri/don-hang/delete-order/${order.id} " />' onclick="return confirm('Bạn chắc chắn chứ ?')" class="btn btn-warning btn-xs">Xóa</a>
+												<a href='<c:url value = "/quan-tri/don-hang/update-orderDetail/${order.id }/${order.productId }" />' class="btn btn-danger btn-xs">Sửa</a> 
+												<a href='<c:url value = "/quan-tri/don-hang/delete-orderDetail/${order.id}/${order.productId } " />' onclick="return confirm('Bạn chắc chắn chứ ?')" class="btn btn-warning btn-xs">Xóa</a>
 												</td>
 											</tr>
 										</tbody>

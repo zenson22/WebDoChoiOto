@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sửa Hóa Đơn Chi Tiết | Admin HTT-Mobile</title>
+</head>
 <body>
 
 		<div id="page-wrapper">
@@ -26,7 +27,8 @@
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-md-6">
-										<form  action="/SOF301_Assignment/InvoiceDetailServlet_Update_Del" method="post">
+										<c:url value="/quan-tri/don-hang/update-orderDetail" var="Url" />
+										<form:form  modelAttribute="order" action='${Url}' method="post" enctype="multipart/form-data">
 											<div class="form-group">
 												<label>Số Lượng</label> 
 												<span style="color: red">${error_soLuong}</span>
@@ -48,7 +50,7 @@
 											<button type="reset" class="btn btn-primary">Reset
 												Button</button>
 
-										</form>
+										</form:form>
 										<br />
 
 									</div>

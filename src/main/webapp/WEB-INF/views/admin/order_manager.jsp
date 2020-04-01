@@ -37,7 +37,7 @@
 											<tr class="odd gradeX">
 												<td>${order.id }</td>
 												<td>${order.user.fullName }</td>
-												<td>${order.user.address }</td>
+												<td>${order.address }</td>
 												
 												<td>${order.orderDate }</td>	
 												<td class="center" style="text-align: center;">

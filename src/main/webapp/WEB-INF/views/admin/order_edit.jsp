@@ -11,12 +11,6 @@
 <body>
 		<div id="page-wrapper">
 			<div id="page-inner">
-				<div class="row">
-					<div class="col-md-12">
-						<h2><a href="Admin/invoice_manager.jsp" style="color: red">Sửa Hóa Đơn</a></h2>						
-					</div>		
-				</div>
-
 				<hr />
 				<div class="row">
 					<div class="col-md-12">
@@ -26,26 +20,24 @@
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-md-6">
-										<form action="/SOF301_Assignment/InvoiceServlet_Update_Del"
-											method="post">
+									<c:url value="/quan-tri/don-hang/update-order" var="Url"/>
+										<form:form  modelAttribute="order" action='${Url}' method="post" enctype="multipart/form-data">
 
 											<div class="form-group">
 												<label>Địa Chỉ Giao Hàng: </label>	
 												<span style="color: red;">${error_address }</span>							
-												<input	class="form-control" type="text" name="Shipping_Address" value="${order.address }" />
+												<input	class="form-control" type="text" name="address" value="${order.address }" />
 											</div>
 
 											<div class="form-group">
 												<label>Phương Thức Thanh Toán: </label>
 												<span style="color: red;">${error_payment }</span>		
-												 <select class="form-control" name="Payment_Methods" >
-													<option value="${order.option }">Chọn</option>
-													<option value="Thanh toan khi giao hang">Thanh
+												 <select class="form-control" name="payment" >
+													<option value="0">Chọn</option>
+													<option value="Thanh toán sau khi nhận hàng">Thanh
 														toán khi giao hàng</option>
-													<option value="Thanh toan qua the ngan hang">Thanh
+													<option value="Thanh toán qua thẻ ngân hàng">Thanh
 														toán qua thẻ ngân hàng</option>
-													<option value="Chuyen khoan ngan hang">Chuyển
-														khoản ngân hàng</option>
 												</select>
 											</div>
 
@@ -53,21 +45,16 @@
 												<label>Trạng Thái Đơn Hàng: </label> 
 													
 												<select
-													class="form-control" name="Status_Order">
+													class="form-control" name="status">
 													<option value="1">Đã Thanh Toán</option>
 													<option value="2">Đang Xử Lý</option>
 												</select>
 											</div>
-											<input type="hidden" name="action" value="Update"> 
-											<input type="hidden" name="ID_Invoice" value="${order.id }"> 
+											<input type="hidden" name="id" value="${order.id }"> 
 											<input type="submit" class="btn btn-danger" value="Sửa" /> 
 											<input type="reset" class="btn btn-primary" value="Reset">
-											<p style="color: red;">
-											
-											
-											</p>
 		
-										</form>
+										</form:form>
 										<br />
 
 									</div>

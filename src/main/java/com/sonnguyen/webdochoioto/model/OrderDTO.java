@@ -11,6 +11,8 @@ public class OrderDTO extends AbstractModel<OrderDTO>{
 		private Integer productId;
 		private ProductDTO product;
 		private UserDTO user;
+		private int payment;
+		private String address;
 		public Integer getUserId() {
 			return userId;
 		}
@@ -58,6 +60,18 @@ public class OrderDTO extends AbstractModel<OrderDTO>{
 		}
 		public void setUser(UserDTO user) {
 			this.user = user;
+		}
+		public int getPayment() {
+			return payment;
+		}
+		public void setPayment(int payment) {
+			this.payment = payment;
+		}
+		public String getAddress() {
+			return address;
+		}
+		public void setAddress(String address) {
+			this.address = address;
 		}
 		
 

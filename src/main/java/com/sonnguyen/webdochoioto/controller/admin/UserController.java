@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 //import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -31,6 +32,9 @@ public class UserController {
 	@Autowired
 	private IRoleService roleService;
 	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	@RequestMapping("")
 	public String viewAllUser(HttpServletRequest request) {
 		
@@ -54,6 +58,7 @@ public class UserController {
 		if(bindingResult.hasErrors()) {
 			return "admin/account_insert";
 		}
+		userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
 		userService.insert(userDTO);
 		return "redirect:/quan-tri/nguoi-dung";
 	}
@@ -62,6 +67,7 @@ public class UserController {
 	public String updateUser(HttpServletRequest request,@PathVariable ("userId") Integer id) {
 		UserDTO user =userService.findOne(id);
 		user.setRoleId(roleService.findOne(user.getId()).getCode());
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		request.setAttribute("user", user );
 		return "admin/account_edit";
 	}
@@ -72,6 +78,7 @@ public class UserController {
 		if(bindingResult.hasErrors()) {
 			return "admin/account_edit";
 		}
+		userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
 		userService.update(userDTO);
 		return "redirect:/quan-tri/nguoi-dung";
 	}

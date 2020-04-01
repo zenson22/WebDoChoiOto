@@ -21,7 +21,7 @@ public class OrderDAOImpl extends AbstractDAO<OrderDTO> implements IOrderDAO{
 
 	@Override
 	public OrderDTO findOne(Integer id) {
-		String sql = "SELECT * FROM ORDERS WHERE O.ID = ?";
+		String sql = "SELECT * FROM ORDERS WHERE ID = ?";
 		List<OrderDTO> orders = query(sql, new OrderMapper(), id);
 		return orders.isEmpty() ? null : orders.get(0);	
 	}
@@ -35,16 +35,16 @@ public class OrderDAOImpl extends AbstractDAO<OrderDTO> implements IOrderDAO{
 
 	@Override
 	public void insert(OrderDTO order) {
-		String sql = "INSERT INTO ORDERS(status, order_date, users_id) VALUES(?, ?, ?);";
-		Long orderId = insert(sql, order.getStatus(),order.getOrderDate(),order.getUserId());
+		String sql = "INSERT INTO ORDERS(status, order_date, users_id, address, payment) VALUES(?, ?, ?, ?, ?);";
+		Long orderId = insert(sql, order.getStatus(),order.getOrderDate(),order.getUserId(),order.getAddress(),order.getPayment());
 		String sqlInsertPOD = "INSERT INTO product_orders_details(orders_id, product_id, quantity) VALUES(?, ?, ?);" ;
 		insert(sqlInsertPOD, orderId, order.getProductId(),order.getQuantity());
 	}
 
 	@Override
 	public void update(OrderDTO order) {
-		String sql = "UPDATE ORDERS SET status = ?, order_date = ? ,user_id = ? WHERE ID = ?";
-		update(sql, order.getStatus(),order.getOrderDate(),order.getUserId(), order.getId());
+		String sql = "UPDATE ORDERS SET status = ?, order_date = ? ,user_id = ?, address = ?, payment = ?  WHERE ID = ?";
+		update(sql, order.getStatus(),order.getOrderDate(),order.getUserId(), order.getAddress(), order.getPayment(), order.getId());
 		String sqlPod = "UPDATE product_orders_details SET Quantity = ?";
 		update(sqlPod, order.getQuantity());
 	}
@@ -63,7 +63,7 @@ public class OrderDAOImpl extends AbstractDAO<OrderDTO> implements IOrderDAO{
 
 	@Override
 	public List<OrderDTO> findProductOrderDetailsByUserId(Integer userId) {
-		StringBuilder sql = new StringBuilder( "SELECT o.id,o.status, o.order_date ");
+		StringBuilder sql = new StringBuilder( "SELECT o.id,o.status, o.order_date,o.address,o.payment ");
 		sql.append(", o.total_price, o.users_id,product_id, quantity "); 
 		sql.append(	"FROM PRODUCT_ORDERS_DETAILS as pod join Orders as o on o.id =pod.orders_id  WHERE o.USERS_ID = ?");
 		List<OrderDTO> orders = query(sql.toString(), new ProductOrderDetailsMapper(), userId);
@@ -72,7 +72,7 @@ public class OrderDAOImpl extends AbstractDAO<OrderDTO> implements IOrderDAO{
 
 	@Override
 	public OrderDTO findProductOrderDetailsOne(Integer orderId, Integer productId) {
-		StringBuilder sql = new StringBuilder( "SELECT o.id,o.status, o.order_date , o.total_price, o.users_id,product_id, quantity "); 
+		StringBuilder sql = new StringBuilder( "SELECT o.id,o.status, o.order_date , o.total_price, o.users_id,product_id, quantity, o.address,o.payment   "); 
 		sql.append(	"FROM PRODUCT_ORDERS_DETAILS as pod join Orders as o on o.id =pod.orders_id  WHERE pod.orders_id = ? AND pod.product_id= ?");
 		List<OrderDTO> orders = query(sql.toString(), new ProductOrderDetailsMapper(), orderId,productId);
 		return orders.isEmpty() ? null : orders.get(0);

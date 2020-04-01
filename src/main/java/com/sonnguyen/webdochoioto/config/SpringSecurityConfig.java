@@ -46,6 +46,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests().antMatchers("/user/**").hasRole("USER").//
 		anyRequest().permitAll();
 		
+		http.exceptionHandling().accessDeniedPage("/accessDenied");
+		
 		http.formLogin().loginPage("/dang-nhap").//
 		loginProcessingUrl("/j_spring_security_check").//
 		usernameParameter("j_username").//
@@ -56,6 +58,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		http.sessionManagement().invalidSessionUrl("/dang-nhap?sessionTimeout");
 		http.logout().logoutUrl("/thoat").//
 		deleteCookies("JSESSIONID");
+		
 	}
 	
 	@Override

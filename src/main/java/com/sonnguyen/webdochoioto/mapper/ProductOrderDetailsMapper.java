@@ -18,6 +18,8 @@ public class ProductOrderDetailsMapper implements RowMapper<OrderDTO> {
 			order.setOrderDate(resultSet.getDate("order_date"));
 			order.setTotalPrice(resultSet.getInt("total_price"));
 			order.setUsers(resultSet.getInt("users_id"));
+			order.setAddress(resultSet.getString("address"));
+			order.setPayment(resultSet.getInt("payment"));
 			return order;
 		} catch (SQLException e) {
 			return null;

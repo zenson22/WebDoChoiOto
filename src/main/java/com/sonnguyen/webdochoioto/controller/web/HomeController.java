@@ -20,6 +20,10 @@ public class HomeController {
 		return mav;
 	}
 
+	@RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
+	public ModelAndView accessDenied() {
+		return new ModelAndView("redirect:/dang-nhap?accessDenied");
+	}
 	
 	@RequestMapping(value = "/dang-nhap", method = RequestMethod.GET)
 	public ModelAndView login(String error, String logout) {

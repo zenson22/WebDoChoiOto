@@ -60,24 +60,24 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value="/update-order",method=RequestMethod.POST)
-	public String updateUser(HttpServletRequest request,@ModelAttribute ("order") OrderDTO order) {
+	public String editOrder(HttpServletRequest request,@ModelAttribute ("order") OrderDTO order) {
 		orderService.update(order);
 		return "redirect:/quan-tri/don-hang";
 	}
 	
-	@RequestMapping(value = "/update-orderDetail/{id}", method = RequestMethod.GET)
-	public ModelAndView editOrderDetails(@PathVariable (name="id") Integer id) {
-		ModelAndView mav = new ModelAndView("admin/order_edit");
-		//OrderDTO order = orderService.findOneOrderDetails(id);
-		//order.setUser(userService.findOne(order.getUserId()));
-		//order.setProduct(productService.findOne(order.getProductId()));
-		//mav.addObject("order", order);
+	@RequestMapping(value = "/update-orderDetail/{orderId}/{productId}", method = RequestMethod.GET)
+	public ModelAndView editOrderDetails(@PathVariable (name="orderId") Integer orderId,@PathVariable (name="productId") Integer productId) {
+		ModelAndView mav = new ModelAndView("admin/orderDetail_edit");
+		OrderDTO order = orderService.findProductOrderDetailsOne(orderId, productId);
+		order.setUser(userService.findOne(order.getUserId()));
+		order.setProduct(productService.findOne(order.getProductId()));
+		mav.addObject("order", order);
 		return mav;
 	}
 	
-	@RequestMapping(value = "/delete-orderDetail/{id}", method = RequestMethod.GET)
-	public String deleteOrder(@PathVariable (name="id") Integer id) {
-		orderService.delete(id);
+	@RequestMapping(value = "/delete-orderDetail/{orderId}/{productId}", method = RequestMethod.GET)
+	public String deleteOrderDetails(@PathVariable (name="orderId") Integer orderId,@PathVariable (name="productId") Integer productId) {
+		orderService.deleteProductOrderDetails(orderId, productId);
 		return "redirect:/quan-tri/don-hang";
 	}
 	
@@ -86,4 +86,11 @@ public class OrderController {
 		orderService.update(order);
 		return "redirect:/quan-tri/don-hang";
 	}
+	
+	@RequestMapping(value = "/delete-order/{id}", method = RequestMethod.GET)
+	public String deleteOrder(@PathVariable (name="id") Integer id) {
+		orderService.delete(id);
+		return "redirect:/quan-tri/don-hang";
+	}
+	
 }

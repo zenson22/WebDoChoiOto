@@ -17,13 +17,13 @@
 
 			<div class="form-group">
 				<c:if test="${param.incorrectAccount != null}">
-					<div class="alert alert-danger">	
-							Username or password incorrect
+					<div class="alert alert-danger" role="alert">	
+							Tài khoản hoặc mật khẩu không chính sác!
 					</div>
 				</c:if>
 				<c:if test="${param.accessDenied != null}">
-					<div class="alert alert-danger">	
-							you Not authorize
+					<div class="alert alert-warning" role="alert">	
+							Bạn không có quyền truy cập vào địa chỉ này!
 					</div>
 				</c:if>
 				<input type="text" class="form-control" id="userName" name="j_username" placeholder="Tên đăng nhập" autofocus="true"/>
