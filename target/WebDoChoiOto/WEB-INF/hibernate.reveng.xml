@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="db_ban_hang_oto" match-name="brand"/>
+  <table-filter match-catalog="db_ban_hang_oto" match-name="category"/>
+  <table-filter match-catalog="db_ban_hang_oto" match-name="images"/>
+  <table-filter match-catalog="db_ban_hang_oto" match-name="orders"/>
+  <table-filter match-catalog="db_ban_hang_oto" match-name="product"/>
+  <table-filter match-catalog="db_ban_hang_oto" match-name="product_orders_details"/>
+  <table-filter match-catalog="db_ban_hang_oto" match-name="role"/>
+  <table-filter match-catalog="db_ban_hang_oto" match-name="user"/>
+  <table-filter match-catalog="db_ban_hang_oto" match-name="user_role"/>
+</hibernate-reverse-engineering>
